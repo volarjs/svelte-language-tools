@@ -10,6 +10,6 @@
 	"references": [
 		{
 			"path": "../language-core/tsconfig.json"
-		}
-	]
+		},
+	],
 }

@@ -19,7 +19,7 @@
 		"noUnusedParameters": true,
 		"baseUrl": "./",
 		"paths": {
-			"@html1-language-tools/*": [
+			"@volar-examples/*": [
 				"packages/*/src"
 			],
 		},

@@ -9,8 +9,7 @@
 			"runtimeExecutable": "${execPath}",
 			"args": [
 				"--disable-extensions",
-				"--extensionDevelopmentPath=${workspaceRoot}/packages/vscode-html1",
-				"--folder-uri=${workspaceRoot}/sample",
+				"--extensionDevelopmentPath=${workspaceRoot}/packages/vscode-svelte"
 			],
 			"outFiles": [
 				"${workspaceRoot}/*/*/out/**/*.js"
