@@ -5,5 +5,8 @@
 		{
 			"path": "./packages/vscode-svelte/tsconfig.json"
 		},
+		{
+			"path": "./packages/svelte-tsc/tsconfig.json"
+		},
 	]
 }
