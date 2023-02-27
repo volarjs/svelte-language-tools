@@ -6,8 +6,7 @@
 	},
 	"scripts": {
 		"build": "tsc -b tsconfig.build.json",
-		"watch": "npm run build && (npm run watch:tsc & npm run watch:esbuild)",
-		"watch:tsc": "tsc -b tsconfig.build.json -w",
+		"watch": "npm run build -- --watch",
 		"watch:esbuild": "cd ./packages/vscode-svelte && npm run watch",
 		"prerelease": "npm run build",
 		"pack": "cd ./packages/vscode-svelte && npm run pack",
