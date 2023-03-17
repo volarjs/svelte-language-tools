@@ -2,7 +2,7 @@ import { LanguageServerInitializationOptions } from '@volar/language-server';
 import * as path from 'typesafe-path';
 import * as vscode from 'vscode';
 import * as lsp from 'vscode-languageclient/node';
-import { activateShowVirtualFiles } from '@volar/vscode-language-client';
+import { activateShowVirtualFiles } from '@volar/vscode';
 
 let client: lsp.BaseLanguageClient;
 

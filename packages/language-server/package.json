@@ -17,7 +17,7 @@
 	},
 	"dependencies": {
 		"@volar-examples/svelte-language-core": "1.0.22",
-		"@volar-plugins/typescript": "2.0.0-alpha.13",
-		"@volar/language-server": "1.3.0-alpha.0"
+		"@volar-plugins/typescript": "2.0.0-alpha.18",
+		"@volar/language-server": "1.4.0-alpha.3"
 	}
 }
