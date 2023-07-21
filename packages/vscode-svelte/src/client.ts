@@ -1,15 +1,16 @@
-import { LanguageServerInitializationOptions } from '@volar/language-server';
+import { InitializationOptions } from '@volar/language-server';
+import * as protocol from '@volar/language-server/protocol';
 import * as path from 'typesafe-path';
 import * as vscode from 'vscode';
 import * as lsp from 'vscode-languageclient/node';
-import { activateShowVirtualFiles } from '@volar/vscode';
+import { ExportsInfoForLabs, supportLabsVersion } from '@volar/vscode';
 
 let client: lsp.BaseLanguageClient;
 
 export async function activate(context: vscode.ExtensionContext) {
 
 	const documentSelector: lsp.DocumentSelector = [{ language: 'svelte' }];
-	const initializationOptions: LanguageServerInitializationOptions = {
+	const initializationOptions: InitializationOptions = {
 		typescript: {
 			tsdk: path.join(
 				vscode.env.appRoot as path.OsPath,
@@ -58,7 +59,13 @@ export async function activate(context: vscode.ExtensionContext) {
 	);
 	await client.start();
 
-	activateShowVirtualFiles('volar.action.showVirtualFiles', client);
+	return {
+		volarLabs: {
+			version: supportLabsVersion,
+			languageClients: [client],
+			languageServerProtocol: protocol,
+		},
+	} satisfies ExportsInfoForLabs;
 }
 
 export function deactivate(): Thenable<any> | undefined {
