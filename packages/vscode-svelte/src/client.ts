@@ -60,6 +60,7 @@ export async function activate(context: vscode.ExtensionContext) {
 	await client.start();
 
 	return {
+		// support for https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volarjs-labs
 		volarLabs: {
 			version: supportLabsVersion,
 			languageClients: [client],
