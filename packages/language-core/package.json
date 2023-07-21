@@ -14,7 +14,7 @@
 	},
 	"dependencies": {
 		"@jridgewell/sourcemap-codec": "^1.4.14",
-		"@volar/language-core": "1.4.0-alpha.3",
+		"@volar/language-core": "1.9.0",
 		"svelte": "^3.55.1",
 		"svelte2tsx": "^0.6.2",
 		"vscode-languageserver-textdocument": "^1.0.8",
