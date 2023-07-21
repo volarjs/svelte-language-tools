@@ -19,7 +19,7 @@ export async function activate(context: vscode.ExtensionContext) {
 	};
 	const serverModule = vscode.Uri.joinPath(context.extensionUri, 'node_modules', '@volar-examples', 'svelte-language-server', 'bin', 'svelte-language-server.js');
 	const runOptions = { execArgv: <string[]>[] };
-	const debugOptions = { execArgv: ['--nolazy', '--inspect=' + 6009] };
+	const debugOptions = { execArgv: ['--nolazy', '--inspect=' + 3009] };
 	const serverOptions: lsp.ServerOptions = {
 		run: {
 			module: serverModule.fsPath,

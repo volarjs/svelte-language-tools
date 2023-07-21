@@ -1,13 +1,13 @@
 import { decode } from '@jridgewell/sourcemap-codec';
-import { VirtualFile, FileKind, LanguageModule, FileCapabilities, FileRangeCapabilities } from '@volar/language-core';
+import { VirtualFile, FileKind, Language, FileCapabilities, FileRangeCapabilities } from '@volar/language-core';
 import { svelte2tsx } from 'svelte2tsx';
 import { TextDocument } from 'vscode-languageserver-textdocument';
 import { URI } from 'vscode-uri';
 
 export * from '@volar/language-core';
 
-export const languageModule: LanguageModule = {
-	createFile(fileName, snapshot) {
+export const languageModule: Language = {
+	createVirtualFile(fileName, snapshot) {
 		if (fileName.endsWith('.svelte')) {
 			return {
 				fileName,
@@ -16,10 +16,11 @@ export const languageModule: LanguageModule = {
 				embeddedFiles: getEmbeddedFiles(fileName, snapshot.getText(0, snapshot.getLength())),
 				capabilities: FileCapabilities.full,
 				mappings: [],
+				codegenStacks:[]
 			};
 		}
 	},
-	updateFile(sourceFile, snapshot) {
+	updateVirtualFile(sourceFile, snapshot) {
 		sourceFile.snapshot = snapshot;
 		sourceFile.embeddedFiles = getEmbeddedFiles(sourceFile.fileName, sourceFile.snapshot.getText(0, sourceFile.snapshot.getLength()));
 	},
@@ -112,6 +113,7 @@ function getEmbeddedFiles(fileName: string, text: string) {
 			},
 			mappings: mappings,
 			embeddedFiles: [],
+			codegenStacks:[]
 		});
 
 		return embeddedFiles;
