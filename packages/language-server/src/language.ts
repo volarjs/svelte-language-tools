@@ -1,12 +1,10 @@
 import { decode } from '@jridgewell/sourcemap-codec';
-import { VirtualFile, FileKind, Language, FileCapabilities, FileRangeCapabilities } from '@volar/language-core';
+import { FileCapabilities, FileKind, FileRangeCapabilities, Language, VirtualFile } from '@volar/language-core';
 import { svelte2tsx } from 'svelte2tsx';
 import { TextDocument } from 'vscode-languageserver-textdocument';
 import { URI } from 'vscode-uri';
 
-export * from '@volar/language-core';
-
-export const languageModule: Language = {
+export const svelteLanguage: Language = {
 	createVirtualFile(fileName, snapshot) {
 		if (fileName.endsWith('.svelte')) {
 			return {

@@ -1,20 +1,18 @@
-import createTsPlugin from 'volar-service-typescript';
-import { createConnection, startLanguageServer, LanguageServerPlugin } from '@volar/language-server/node';
-import { languageModule } from '@volar-examples/svelte-language-core';
+import { LanguageServerPlugin, createConnection, startLanguageServer } from '@volar/language-server/node';
+import createTsService from 'volar-service-typescript';
+import { svelteLanguage } from './language';
 
-const connection = createConnection();
-const baseExts = ['js', 'cjs', 'mjs', 'ts', 'cts', 'mts', 'jsx', 'tsx', 'json', 'svelte'];
 const plugin: LanguageServerPlugin = (): ReturnType<LanguageServerPlugin> => {
 	return {
 		extraFileExtensions: [{ extension: 'svelte', isMixedContent: true, scriptKind: 7 }],
-		watchFileExtensions: baseExts,
+		watchFileExtensions: ['js', 'cjs', 'mjs', 'ts', 'cts', 'mts', 'jsx', 'tsx', 'json', 'svelte'],
 		resolveConfig(config) {
 
 			config.services ??= {};
-			config.services.typescript ??= createTsPlugin();
+			config.services.typescript ??= createTsService();
 
 			config.languages ??= {};
-			config.languages.svelte ??= languageModule;
+			config.languages.svelte ??= svelteLanguage;
 
 			return config;
 		},
@@ -22,6 +20,6 @@ const plugin: LanguageServerPlugin = (): ReturnType<LanguageServerPlugin> => {
 };
 
 startLanguageServer(
-	connection,
+	createConnection(),
 	plugin,
 );
